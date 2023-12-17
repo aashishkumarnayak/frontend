@@ -1,70 +1,97 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Yoga Classes Admission System
 
-In the project directory, you can run:
+This project implements a simple admission system for Yoga classes, including a user registration form and a payment system.
 
-### `npm start`
+## Live Project Link
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+[Live Link](https://yoga-classes-addmission-form.netlify.app/)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Project Demo Video 
 
-### `npm test`
+[Demo Video](https://drive.google.com/file/d/11Y8mai3JOy05sRaYWynLf5q18NObd41A/view?usp=drive_link)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Database Schema
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The MongoDB database schema consists of two collections: `User` and `Payment`.
 
-### `npm run eject`
+### User Collection
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `_id`: ObjectId (Primary Key)
+- `fullName`: String
+- `dateOfBirth`: Date
+- `gender`: String
+- `contactNumber`: String
+- `emailAddress`: String (Unique)
+- `address`: String
+- `preferredBatch`: String
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Payment Collection
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `_id`: ObjectId (Primary Key)
+- `user`: ObjectId (Foreign Key referencing User._id)
+- `amount`: Number
+- `status`: String (Enum: 'success', 'pending', 'failed', Default: 'pending')
+- `timestamp`: Date
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## ER Diagram Explanation
 
-## Learn More
+The ER (Entity-Relationship) diagram illustrates the relationships between the `User` and `Payment` collections.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **User Collection:**
+  - Each user is uniquely identified by an `_id` (ObjectId) acting as the primary key.
+  - User information includes full name, date of birth, gender, contact number, email address, address, and preferred batch.
+  - The `preferredBatch` field indicates the user's choice of yoga class batch.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Payment Collection:**
+  - Each payment is uniquely identified by an `_id` (ObjectId) acting as the primary key.
+  - The `user` field is a foreign key referencing the `User._id`, establishing a relationship between the two collections.
+  - Additional payment details include the payment amount, status (success, pending, failed), and a timestamp.
 
-### Code Splitting
+## ER Diagram
+```
++-------------------+          +-------------------+
+|       User        |          |      Payment      |
++-------------------+          +-------------------+
+| _id: ObjectId (PK)|1---*     | _id: ObjectId (PK)|
+| fullName: String  |<-------1 | user: ObjectId (FK)|
+| dateOfBirth: Date |          | amount: Number    |
+| gender: String    |          | status: String    |
+| contactNumber: String |      | timestamp: Date   |
+| emailAddress: String   |      +-------------------+
+| address: String   |
+| preferredBatch: String |
++-------------------+
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+## Backend (Node.js with Express and MongoDB)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The backend is built using Node.js, Express, and MongoDB. The server code is available in the `server` directory.
 
-### Making a Progressive Web App
+### Setting up the Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Install dependencies: `npm install`
+2. Run the server: `npm start`
 
-### Advanced Configuration
+## Frontend (React)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The frontend is implemented using React. The client code is available in the `client` directory.
 
-### Deployment
+### Setting up the Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+1. Install dependencies: `npm install`
+2. Run the development server: `npm start`
 
-### `npm run build` fails to minify
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Open the frontend in your browser and fill out the registration form.
+2. Upon successful registration, you will be redirected to the payment page.
+3. Complete the payment process.
+
+
+
