@@ -1,7 +1,7 @@
 // src/components/PaymentPage.js
 
 import React, { useState } from 'react';
-
+import { BASE_URL } from '../helper';
 const PaymentPage = ({ onSubmit }) => {
   const [paymentData, setPaymentData] = useState({
     userId: '',
@@ -20,7 +20,7 @@ const PaymentPage = ({ onSubmit }) => {
 
     try {
       // Make an API call to submit the payment
-      const response = await fetch('http://localhost:4000/api/payment/new', {
+      const response = await fetch(`${BASE_URL}/api/payment/new`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

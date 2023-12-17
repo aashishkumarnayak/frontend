@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { BASE_URL } from '../helper';
 const RegistrationForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
@@ -36,7 +36,7 @@ const RegistrationForm = () => {
   
     if (isFormValid) {
       try {
-        const response = await fetch('http://localhost:4000/api/user/new/', {
+        const response = await fetch(`${BASE_URL}/api/user/new/`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

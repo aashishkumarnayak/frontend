@@ -1,38 +1,10 @@
-// import React from 'react';
-// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-// import RegistrationForm from './component/RegistrationForm.js';
-// import PaymentPage from './component/PaymentPage.js';
-// import './component/RegistrationForm.css';
-// import './component/PaymentPage.css';
-
-// const App = () => {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<RegistrationForm />} />
-//         <Route path="/payment" element={<PaymentPage />} />
-//       </Routes>
-//     </Router>
-//   );
-// };
-
-// export default App;
-
-
-// src/App.js
-
-// src/App.js
-
-// src/App.js
-// src/App.js
-// src/App.js
-
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import RegistrationForm from './component/RegistrationForm';
 import PaymentPage from './component/PaymentPage';
 import './component/RegistrationForm.css';
 import './component/PaymentPage.css';
+import { BASE_URL } from './helper';
 
 const App = () => {
   const [userId, setUserId] = useState(null);
@@ -40,7 +12,7 @@ const App = () => {
   const handleRegistrationSubmit = async (formData) => {
     try {
       // Assume you have logic to submit the registration form and get the user ID
-      const response = await fetch('http://localhost:4000/api/user/new', {
+      const response = await fetch(`${BASE_URL}/api/user/new`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -65,7 +37,7 @@ const App = () => {
   const handlePaymentSubmit = async (paymentData) => {
     try {
       // Assume you have logic to submit the payment form
-      const response = await fetch('http://localhost:4000/api/payment/new', {
+      const response = await fetch(`${BASE_URL}/api/payment/new`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

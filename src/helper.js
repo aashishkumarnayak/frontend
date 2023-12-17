@@ -1,0 +1,1 @@
+export const BASE_URL = "https://backend-api-1rmk.onrender.com"
