@@ -1,0 +1,54 @@
+form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #f7f7f7;
+}
+.form-heading {
+  text-align: center;
+  color: #2c3e50; /* Adjust the color as needed */
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-family: 'Arial', sans-serif; /* Optional: Choose a suitable font */
+}
+
+
+label {
+  display: block;
+ 
+  font-weight: bold;
+  color: #333;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+select {
+  appearance: none;
+}
+
+button {
+  background-color: #3f51b5;
+  color: #fff;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #303f9f;
+}
